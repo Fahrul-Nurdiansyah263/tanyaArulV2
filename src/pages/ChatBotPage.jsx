@@ -49,7 +49,7 @@ export default function ChatBotPage() {
     ) {
       setMessages((prev) => [
         ...prev,
-        { sender: "bot", text: "Fahrul atau arul" },
+        { sender: "bot", text: "Fahrul atau arul, Pria yang memiliki nama lengkap Fahrul Nurdianysah, atau yang lebih dikenal dengan nama FahrulTheKingSlayer. Pria ini memiliki hobi membaca buku dan juga bermain game. Yang memiliki kepercayaan jika sesuatu yang ditakdirkan kepada seseorang pasti tidak akan tertukar. " },
       ]);
       return;
     }
@@ -120,9 +120,7 @@ export default function ChatBotPage() {
                     className="rounded-lg mb-2 max-w-full"
                   />
                 )}
-                <div
-                  className="whitespace-pre-wrap"
-                  dangerouslySetInnerHTML={{ __html: msg.text }}
+                <div dangerouslySetInnerHTML={{ __html: msg.text }}
                 />
               </div>
             </div>
