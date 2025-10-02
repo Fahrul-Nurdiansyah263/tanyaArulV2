@@ -1,12 +1,37 @@
-# React + Vite
+Link : tanya-arul-v2.vercel.app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🔎 Apa itu tanyaArul?
 
-Currently, two official plugins are available:
+tanyaArul adalah sebuah aplikasi web interaktif yang berfungsi sebagai asisten tanya jawab berbasis web.
+Aplikasi ini dirancang agar pengguna dapat mengajukan pertanyaan secara langsung dan mendapatkan jawaban dari sistem yang telah dibangun.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Selain itu, proyek ini juga berperan sebagai portfolio showcase, menampilkan kemampuan dalam React, Tailwind CSS, dan integrasi komponen modern.
 
-## Expanding the ESLint configuration
+🎯 Tujuan
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Menyediakan platform tanya jawab sederhana berbasis web.
+
+Memberikan pengalaman UI responsif & interaktif.
+
+Menjadi pembuktian skill frontend development dalam pengembangan aplikasi modern.
+
+🛠️ Fitur Utama
+
+QnA Interaktif – pengguna bisa mengajukan pertanyaan langsung.
+
+UI Responsif – nyaman diakses melalui desktop maupun mobile.
+
+Desain Modern – menggunakan animasi ringan & ikon teknologi.
+
+Struktur Modular – komponen dipisahkan agar mudah dipelihara dan dikembangkan.
+
+🚀 Teknologi yang Digunakan
+
+React (Vite) → framework frontend modern.
+
+Tailwind CSS → styling dengan pendekatan utility-first.
+
+react-icons → koleksi ikon teknologi dan dekorasi UI.
+
+react-fast-marquee → teks berjalan untuk tampilan dinamis.
+
