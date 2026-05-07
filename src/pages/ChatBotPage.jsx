@@ -13,6 +13,7 @@ export default function ChatBotPage() {
   const [imagePreview, setImagePreview] = useState("");
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [tokenHabis, setTokenHabis] = useState(false);
 
   const chatEndRef = useRef(null);
 
@@ -73,13 +74,17 @@ export default function ChatBotPage() {
         });
       }
     } catch (e) {
-      setMessages((prev) => [
-        ...prev,
-        {
-          sender: "bot",
-          text: `<p style="color:red;">Error: ${e.message}</p>`,
-        },
-      ]);
+      if (e.type === "QUOTA_EXHAUSTED" || e.message === "QUOTA_EXHAUSTED") {
+        setTokenHabis(true);
+      } else {
+        setMessages((prev) => [
+          ...prev,
+          {
+            sender: "bot",
+            text: `<p style="color:red;">Error: ${e.message}</p>`,
+          },
+        ]);
+      }
     } finally {
       setIsLoading(false);
     }
@@ -107,8 +112,8 @@ export default function ChatBotPage() {
             >
               <div
                 className={`inline-block max-w-[80%] lg:max-w-[55%] px-4 py-2 rounded-2xl shadow text-white prose prose-invert break-words ${msg.sender === "user"
-                    ? "bg-[#303030]"
-                    : "bg-[#303030]"
+                  ? "bg-[#303030]"
+                  : "bg-[#303030]"
                   }`}
               >
                 {msg.img && (
@@ -133,6 +138,26 @@ export default function ChatBotPage() {
           <div ref={chatEndRef} />
         </div>
       </main>
+
+      {/* Notifikasi Token Habis */}
+      {tokenHabis && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
+          <div className="bg-[#2a2a2a] border border-yellow-500/40 rounded-2xl p-6 mx-4 max-w-sm w-full shadow-2xl text-center">
+            <div className="text-4xl mb-3">⚡</div>
+            <h2 className="text-white font-semibold text-lg mb-2">Token Habis</h2>
+            <p className="text-gray-400 text-sm mb-5">
+              Semua model AI sedang tidak tersedia atau kuota habis.
+              Silakan coba lagi beberapa saat kemudian.
+            </p>
+            <button
+              onClick={() => setTokenHabis(false)}
+              className="bg-yellow-500 hover:bg-yellow-400 transition-colors text-black font-semibold px-6 py-2 rounded-full text-sm"
+            >
+              Mengerti
+            </button>
+          </div>
+        </div>
+      )}
 
       <div className="w-full flex justify-center items-center py-2 bg-transparent flex-col  max-w-[1550px] mx-auto">
         <form

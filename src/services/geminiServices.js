@@ -7,8 +7,7 @@ const genAI = new GoogleGenerativeAI(API_KEY);
 const FALLBACK_MODELS = [
     "gemini-2.5-flash",
     "gemini-2.0-flash",
-    "gemini-1.5-flash",
-    "gemini-1.5-pro",
+    "gemini-2.0-flash-lite",
 ];
 
 async function fileToGenerativePart(file) {
@@ -29,7 +28,9 @@ function isRetryableError(error) {
         msg.includes("high demand") ||
         msg.includes("overloaded") ||
         msg.includes("429") ||
-        msg.includes("quota")
+        msg.includes("quota") ||
+        msg.includes("404") ||
+        msg.includes("not found")
     );
 }
 
@@ -50,19 +51,19 @@ export async function generativeContentStream(prompt, imageFile){
     let lastError;
     for (const modelName of FALLBACK_MODELS) {
         try {
-            console.log(`[Gemini] Mencoba model: ${modelName}`);
             const model = genAI.getGenerativeModel({ model: modelName });
             const result = await model.generateContentStream({contents});
             return result;
         } catch (error) {
             lastError = error;
             if (isRetryableError(error)) {
-                console.warn(`[Gemini] Model "${modelName}" tidak tersedia, pindah ke model berikutnya...`);
                 continue;
             }
             throw error;
         }
     }
-    
-    throw new Error(`Semua model tidak tersedia saat ini. Coba lagi beberapa saat. (${lastError?.message})`);
+    const quotaError = new Error("QUOTA_EXHAUSTED");
+    quotaError.type = "QUOTA_EXHAUSTED";
+    throw quotaError;
+
 }
