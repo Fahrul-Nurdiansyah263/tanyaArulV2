@@ -4,7 +4,6 @@ import {GoogleGenerativeAI} from "@google/generative-ai";
 const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 const genAI = new GoogleGenerativeAI(API_KEY);
 
-// Urutan model fallback: jika model pertama gagal, otomatis coba berikutnya
 const FALLBACK_MODELS = [
     "gemini-2.5-flash",
     "gemini-2.0-flash",
@@ -61,11 +60,9 @@ export async function generativeContentStream(prompt, imageFile){
                 console.warn(`[Gemini] Model "${modelName}" tidak tersedia, pindah ke model berikutnya...`);
                 continue;
             }
-            // Error bukan 503/quota (misal: API key invalid) → langsung lempar
             throw error;
         }
     }
-
-    // Semua model habis dicoba
+    
     throw new Error(`Semua model tidak tersedia saat ini. Coba lagi beberapa saat. (${lastError?.message})`);
 }
