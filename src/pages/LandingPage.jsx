@@ -6,7 +6,7 @@ import MarqueeBoxes from "../components/MarqueeBoxes";
 
 export default function LandingPage() {
   return (
-    <div className="bg-black text-white font-inter overflow-x-hidden">
+    <div className="bg-black text-white font-inter overflow-x-hidden min-h-screen">
       <nav className="py-4 px-4 max-w-[1440px] mx-auto">
         <h1 className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-xl font-bold text-black">
           A

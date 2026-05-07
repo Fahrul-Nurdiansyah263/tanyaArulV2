@@ -98,7 +98,7 @@ export default function ChatBotPage() {
       </nav>
 
       <main className="flex-1 overflow-y-auto p-4 w-full max-w-[1550px] mx-auto">
-        <div className="w-[95%] md:w-[80%] mx-auto flex flex-col space-y-4">
+        <div className="w-[95%]  mx-auto flex flex-col space-y-4">
           {messages.map((msg, idx) => (
             <div
               key={idx}
