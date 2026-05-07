@@ -87,7 +87,7 @@ export default function ChatBotPage() {
 
   return (
     <div className="bg-[#1f1f1f] flex flex-col h-screen">
-      <nav className="flex items-center p-4 border-b border-gray-700 ">
+      <nav className="flex items-center p-4 border-b border-gray-700  max-w-[1550px] mx-auto w-full ">
         <Link
           to="/"
           className="flex items-center justify-center rounded-full bg-white h-10 w-10 shadow-md"
@@ -97,7 +97,7 @@ export default function ChatBotPage() {
         <h1 className="ml-4 text-white font-semibold">tanyaArul.io</h1>
       </nav>
 
-      <main className="flex-1 overflow-y-auto p-4">
+      <main className="flex-1 overflow-y-auto p-4 w-full max-w-[1550px] mx-auto">
         <div className="w-[95%] md:w-[80%] mx-auto flex flex-col space-y-4">
           {messages.map((msg, idx) => (
             <div
@@ -136,7 +136,7 @@ export default function ChatBotPage() {
         </div>
       </main>
 
-      <div className="w-full flex justify-center items-center py-2 bg-transparent flex-col">
+      <div className="w-full flex justify-center items-center py-2 bg-transparent flex-col  max-w-[1550px] mx-auto">
         <form
           onSubmit={handleSubmit}
           className="w-[95%] md:w-[70%] flex items-center gap-3"
