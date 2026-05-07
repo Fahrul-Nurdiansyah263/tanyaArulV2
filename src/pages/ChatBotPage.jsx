@@ -102,16 +102,14 @@ export default function ChatBotPage() {
           {messages.map((msg, idx) => (
             <div
               key={idx}
-              className={`flex ${
-                msg.sender === "user" ? "justify-end" : "justify-start"
-              }`}
+              className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"
+                }`}
             >
               <div
-                className={`max-w-[80%] px-4 py-2 rounded-2xl shadow text-white prose prose-invert  break-words ${
-                  msg.sender === "user"
-                    ? "bg-[#303030] "
-                    : "bg-[#303030] !p-3px"
-                }`}
+                className={`inline-block max-w-[80%] lg:max-w-[55%] px-4 py-2 rounded-2xl shadow text-white prose prose-invert break-words ${msg.sender === "user"
+                    ? "bg-[#303030]"
+                    : "bg-[#303030]"
+                  }`}
               >
                 {msg.img && (
                   <img
